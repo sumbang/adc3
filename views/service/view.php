@@ -21,8 +21,8 @@ $habilation = Habilitation::find()->where(['CODEROLE'=>$compte->ROLE,'CODEMENU'=
 <div class="service-view">
 
     <p>
-        <?php if ($habilation->AUPDATE == 1) echo  Html::a('Modifier', ['update', 'id' => $model->CODEDPT], ['class' => 'btn btn-primary']) ?>
-        <?php  if ($habilation->ADELETE == 1)  echo Html::a('Supprimer', ['delete', 'id' => $model->CODEDPT], [
+        <?php if ($habilation->AUPDATE == 1) echo  Html::a('Modifier', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
+        <?php  if ($habilation->ADELETE == 1)  echo Html::a('Supprimer', ['delete', 'id' => $model->ID], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

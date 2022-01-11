@@ -89,7 +89,9 @@ class DepartementsController extends Controller
 
         $model = new Departements();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            $model->save(false);
 
             Yii::$app->session->setFlash('success', 'Département enregistré avec succès.');
 
@@ -116,7 +118,9 @@ class DepartementsController extends Controller
 
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->save(false);
 
             Yii::$app->session->setFlash('success', 'Département modifié avec succès.');
 
