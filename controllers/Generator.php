@@ -553,7 +553,10 @@ LE DIRECTEUR GENERAL<br>
 
         $builder.='<tr><td colspan="2" height="30" valign="bottom" align="center"></td></tr></table></body></html>';
 
-        $nom = $employe->NOM." ".$employe->PRENOM;
+        $nom = $employe->NOM."-".$employe->PRENOM;
+        $fichier_nom = str_replace("é","e",$nom);
+        $fichier_nom = str_replace("'","",$fichier_nom);
+        $fichier_nom = str_replace(" ","-",$fichier_nom);
         $filename = 'Decision-'.$nom.'-'.$model->ANNEEEXIGIBLE.'.pdf';
         $repertoire = '../web/uploads';
 

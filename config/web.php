@@ -29,15 +29,15 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => false,
-            'transport' => [
+            'useFileTransport' => true,
+           /* 'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'mail.gandi.net',
-                'username' => 'dev@acamvie.com',
-                'password' => 'Dev@2017',
-                'port' => '465',
-                'encryption' => 'ssl',
-            ],
+                'host' => '',
+                'username' => '',
+                'password' => '',
+                'port' => '',
+                'encryption' => '',
+            ],*/
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
