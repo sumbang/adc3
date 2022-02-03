@@ -19,7 +19,7 @@ class Civilite extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'CIVILITE';
+        return 'civilite';
     }
 
     /**

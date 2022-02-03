@@ -36,7 +36,7 @@ class Parametre extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'PARAMETRE';
+        return 'parametre';
     }
 
     /**

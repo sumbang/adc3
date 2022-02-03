@@ -29,7 +29,7 @@ class Arret extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'ARRET';
+        return 'arret';
     }
 
     /**

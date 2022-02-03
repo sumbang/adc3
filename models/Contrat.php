@@ -19,7 +19,7 @@ class Contrat extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'CONTRAT';
+        return 'contrat';
     }
 
     /**

@@ -24,7 +24,7 @@ class Exercice extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'EXERCICE';
+        return 'exercice';
     }
 
     /**

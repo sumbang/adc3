@@ -23,7 +23,7 @@ class Documents extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'DOCUMENTS';
+        return 'documents';
     }
 
     /**

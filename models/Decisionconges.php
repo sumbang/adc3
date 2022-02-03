@@ -49,7 +49,7 @@ class Decisionconges extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'DECISIONCONGES';
+        return 'decisionconges';
     }
 
     /**

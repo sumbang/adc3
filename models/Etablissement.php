@@ -20,7 +20,7 @@ class Etablissement extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'ETABLISSEMENT';
+        return 'etablissement';
     }
 
     /**

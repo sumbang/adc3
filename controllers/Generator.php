@@ -132,15 +132,15 @@ class Generator
 
         $debutservice = date('Y-m-d',strtotime($employe->LASTCONGE.' +1 day'));
 
-        $reprise = date('Y-m-d',strtotime($model->FINREEL.' +1 day'));
+        $reprise = date('Y-m-d',strtotime($model->FINPLANIF.' +1 day'));
 
-        $nextconge = date('Y-m-d',strtotime($reprise.' +'.($setting->DUREESERVICE - 1).' day'));
+        $nextconge = date('Y-m-d',strtotime($reprise.' +'.($setting->DUREESERVICE).' day'));
 
         $next = self::ageEmploye($employe->DATNAISS,$nextconge);
 
         if($next < 0) $nextconge = null;
 
-        $employe->LASTCONGE = $employe->DATECALCUL; $employe->DATECALCUL = $nextconge;
+        $employe->LASTCONGE = $model->FINPLANIF; $employe->DATECALCUL = $nextconge;
 
         if($nextconge != null) $vnextconge = self::trueDate2($nextconge); else $vnextconge = "";
 
@@ -553,7 +553,7 @@ LE DIRECTEUR GENERAL<br>
 
         $builder.='<tr><td colspan="2" height="30" valign="bottom" align="center"></td></tr></table></body></html>';
 
-        $nom = $employe->NOM."-".$employe->PRENOM;
+        $nom = $employe->NOM." ".$employe->PRENOM;
         $fichier_nom = str_replace("é","e",$nom);
         $fichier_nom = str_replace("'","",$fichier_nom);
         $fichier_nom = str_replace(" ","-",$fichier_nom);
@@ -579,15 +579,16 @@ LE DIRECTEUR GENERAL<br>
                 'SetAuthor' => 'ADC',
                 'SetCreator' => 'ADC',
                 'SetKeywords' => 'ADC',
-                'SetHeader'=>['<div style="text-align: left;  height: 100px"><img src="../web/img/logo2.png" width="200px" height="auto" /></div>'],
+                'SetHeader'=>['<div style="text-align: left;  height: 100px"><img src="../web/img/logo.png" width="200px" height="auto" /></div>'],
                 'SetFooter'=>['<div style="text-align: center; color:#000000; font-size: 12px"><br>Siège Social : Aéroport International de Yaoundé – Nsimalen – BP 13615 Yaoundé<br>Tél. : (237) 222 23 36 02 / 222 23 45 21 – Fax (237) 222 23 45 20</div>'],
             ],
 
         ]);
 
         $mpdf = $pdf->api;
+      //  $mpdf = new \Mpdf\Mpdf();
 
-        $mpdf->SetHTMLHeader('<div style="text-align: left;  height: 100px"><img src="../web/img/logo2.png" width="200px" height="auto" /></div>',true);
+        $mpdf->SetHTMLHeader('<div style="text-align: left;  height: 100px"><img src="../web/img/logo.png" width="200px" height="auto" /></div>',true);
 
         $mpdf->SetHTMLFooter('<div style="text-align: center; color:#000000; font-size: 12px"><br>Siège Social : Aéroport International de Yaoundé – Nsimalen – BP 13615 Yaoundé<br>Tél. : (237) 222 23 36 02 / 222 23 45 21 – Fax (237) 222 23 45 20</div>',true);
 

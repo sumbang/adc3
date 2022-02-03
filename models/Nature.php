@@ -17,7 +17,7 @@ class Nature extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'NATURE';
+        return 'nature';
     }
 
     /**

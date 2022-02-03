@@ -29,7 +29,7 @@ class USER extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return 'USER';
+        return 'user';
     }
 
     /**

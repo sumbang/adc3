@@ -18,7 +18,7 @@ class Ampliation extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'AMPLIATION';
+        return 'ampliation';
     }
 
     /**

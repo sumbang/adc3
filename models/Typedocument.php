@@ -17,7 +17,7 @@ class Typedocument extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'TYPEDOCUMENT';
+        return 'typedocument';
     }
 
     /**

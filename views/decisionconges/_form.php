@@ -171,9 +171,9 @@ use kartik\select2\Select2;
 
         echo Html::submitButton('ENREGISTRER', ['class' => 'btn btn-success'])."&nbsp;&nbsp;";
 
-        echo Html::a('GENERER LE MODELE D\'EDITION',['decisionconges/generer','id'=>$model->ID_DECISION], ['class' => 'btn btn-primary']);
+        //echo Html::a('GENERER LE MODELE D\'EDITION',['decisionconges/generer','id'=>$model->ID_DECISION], ['class' => 'btn btn-primary']);
         
-     /*   if(!$model->isNewRecord) { if(empty($model->EDITION)) echo Html::a('GENERER LE MODELE D\'EDITION',['decisionconges/generer','id'=>$model->ID_DECISION], ['class' => 'btn btn-primary']); else  echo '<a class="btn btn-primary" href="../web/uploads/'.$model->EDITION.'" target="_blank">AFFICHER LE MODELE D\'EDITION</a>'; } */  ?>
+       if(!$model->isNewRecord) { if(empty($model->EDITION)) echo Html::a('GENERER LE MODELE D\'EDITION',['decisionconges/generer','id'=>$model->ID_DECISION], ['class' => 'btn btn-primary']); else  echo '<a class="btn btn-primary" href="../web/uploads/'.$model->EDITION.'" target="_blank">AFFICHER LE MODELE D\'EDITION</a>'; }  ?>
 
         <?php } ?>
 

@@ -17,7 +17,7 @@ class Sitmat extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'SITMAT';
+        return 'sitmat';
     }
 
     /**

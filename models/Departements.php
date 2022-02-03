@@ -17,7 +17,7 @@ class Departements extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'DEPARTEMENTS';
+        return 'departements';
     }
 
     /**

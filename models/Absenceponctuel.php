@@ -41,7 +41,7 @@ class Absenceponctuel extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'ABSENCEPONCTUEL';
+        return 'absenceponctuel';
     }
 
     /**

@@ -19,7 +19,7 @@ class Emploi extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'EMPLOI';
+        return 'emploi';
     }
 
     /**

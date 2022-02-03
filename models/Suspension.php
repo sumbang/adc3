@@ -35,7 +35,7 @@ class Suspension extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'SUSPENSION';
+        return 'suspension';
     }
 
     /**

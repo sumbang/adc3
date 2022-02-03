@@ -52,7 +52,7 @@ class Employe extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'EMPLOYE';
+        return 'employe';
     }
 
     /**

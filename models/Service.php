@@ -17,7 +17,7 @@ class Service extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'SERVICE';
+        return 'service';
     }
 
     /**

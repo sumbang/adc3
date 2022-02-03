@@ -63,7 +63,7 @@ class DecisioncongesSearch extends Decisionconges
         // si admin ou gestionnaire
         if(Yii::$app->user->identity->ROLE == "R1" || Yii::$app->user->identity->ROLE == "R2") $query = Decisionconges::find();
 
-        else $query = Decisionconges::find(['IDUSER'=>Yii::$app->user->identity->IDUSER]);
+        else $query = Decisionconges::find()->where(['IDUSER'=>Yii::$app->user->identity->IDUSER]);
 
         if(isset($_REQUEST["HISTORIQUE"])) $query->andWhere(["HISTORIQUE"=>$_REQUEST["HISTORIQUE"]]);
 

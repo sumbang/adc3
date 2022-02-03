@@ -18,7 +18,7 @@ class Menus extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'MENUS';
+        return 'menus';
     }
 
     /**
