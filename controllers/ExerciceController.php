@@ -327,7 +327,7 @@ class ExerciceController extends Controller
 
             else {
 
-                $query = "select * from EMPLOYE where STATUT = 1 ";
+                $query = "select * from employe where STATUT = 1 ";
 
                 if($service != 0) {
                     $query.=" and SERVICE = $service ";
@@ -452,7 +452,7 @@ class ExerciceController extends Controller
         } else {
 
 
-            $query = "select * from EMPLOYE where STATUT = 1 ";
+            $query = "select * from employe where STATUT = 1 ";
 
             if($service != 0) {
                 $query.=" and SERVICE = $service ";

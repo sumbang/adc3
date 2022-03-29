@@ -14,7 +14,7 @@ class EmployeController extends Controller
     public function actionIndex()
     {
 
-        $fileHandler=fopen(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."employe.csv",'r');
+        $fileHandler=fopen(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."conges.csv",'r');
 
         if($fileHandler){
 
@@ -34,7 +34,7 @@ class EmployeController extends Controller
 
                 $tab_exclus = array("02148","00662","02258","01156","02497","02505","00577","02344","00347","01747","02175","02017","00817","01866","01504","01769","00190","01579","00383","02440","02180","00946","00956","01961","02032","02031","01585","01563","00872","00387");
 
-                if(in_array($matricule,$tab_exclus)) {
+                //if(in_array($matricule,$tab_exclus)) {
 
                     $exist = Employe::findOne(["MATRICULE" => $matricule]);
 
@@ -97,7 +97,7 @@ class EmployeController extends Controller
                         }
                     }
 
-                }
+            //    }
 
             }
         }

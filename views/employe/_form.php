@@ -79,9 +79,9 @@ if(!$model->isNewRecord) {
     ?>
 
 
-    <?php if(!$model->isNewRecord) echo $form->field($model, 'SOLDECREDIT')->textInput(['type'=>'number','readonly'=>true]) ?>
+    <?php if(!$model->isNewRecord) echo $form->field($model, 'SOLDECREDIT')->textInput(['type'=>'number','readonly'=>false]) ?>
 
-    <?php if(!$model->isNewRecord) echo  $form->field($model, 'SOLDEAVANCE')->textInput(['type'=>'number','readonly'=>true]) ?>
+    <?php if(!$model->isNewRecord) echo  $form->field($model, 'SOLDEAVANCE')->textInput(['type'=>'number','readonly'=>false]) ?>
 
     <?php
 

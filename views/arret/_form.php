@@ -33,7 +33,7 @@ $habilation = Habilitation::find()->where(['CODEROLE'=>$compte->ROLE,'CODEMENU'=
     if($model->isNewRecord){
 
         $data = array();
-        $query = "SELECT * FROM EMPLOYE WHERE STATUT = 1 "; $d = array();  $direction = "(";
+        $query = "SELECT * FROM employe WHERE STATUT = 1 "; $d = array();  $direction = "(";
 
         if(Yii::$app->user->identity->DIRECTION != null) {
             $emps = Employe::find()->where(["DIRECTION" => Yii::$app->user->identity->DIRECTION])->all();

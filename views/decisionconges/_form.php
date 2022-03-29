@@ -34,7 +34,7 @@ use kartik\select2\Select2;
 
         $data = array();
 
-        $query = "SELECT * FROM EMPLOYE WHERE STATUT = 1 "; $d = array();
+        $query = "SELECT * FROM employe WHERE STATUT = 1 "; $d = array();
 
        if(Yii::$app->user->identity->ROLE == "R3") {
 
