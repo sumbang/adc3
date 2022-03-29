@@ -1,0 +1,21 @@
+name: CI Deploy
+ 
+on:
+  push:
+    branches: [main]
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.TOKEN }}
+      - name: Deploy to production
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{ secrets.USERNAME }}
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          script: 'cd /var/www/git/ && ./post-receive'
