@@ -134,7 +134,11 @@ class Generator
 
         $reprise = date('Y-m-d',strtotime($model->FINPLANIF.' +1 day'));
 
+        $vacance = $setting->DUREECONGES - $model->NBJOUR;
+
         $nextconge = date('Y-m-d',strtotime($reprise.' +'.($setting->DUREESERVICE).' day'));
+
+        $nextconge = date('Y-m-d',strtotime($nextconge.' +'.($vacance).' day'));
 
         $next = self::ageEmploye($employe->DATNAISS,$nextconge);
 
