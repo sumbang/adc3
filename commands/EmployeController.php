@@ -14,7 +14,7 @@ class EmployeController extends Controller
     public function actionIndex()
     {
 
-        $fileHandler=fopen(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."conges1.csv",'r');
+        $fileHandler=fopen(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."conge2.csv",'r');
 
         if($fileHandler){
 
@@ -92,7 +92,7 @@ class EmployeController extends Controller
                             $employe->DIRECTION = $direct->ID;
                             $employe->save(false);
 
-                            //echo "Enregistrement ".$employe->MATRICULE." - ".$employe->NOM." ".$employe->PRENOM."\n\r";
+                            echo "Enregistrement ".$employe->MATRICULE." - ".$employe->NOM." ".$employe->PRENOM."\n\r";
 
                         }
 
