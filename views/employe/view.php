@@ -50,7 +50,7 @@ $habilation = Habilitation::find()->where(['CODEROLE'=>$compte->ROLE,'CODEMENU'=
                 'value' => $model->getEmploi()
             ],
             'CODEETS' => [
-                'label' => 'Lieu d\'affectation',
+                'label' => 'Lieu d\'embauche',
                 'value' => $model->getEtablissement()
             ],
             'CODECIV' => [
@@ -62,7 +62,7 @@ $habilation = Habilitation::find()->where(['CODEROLE'=>$compte->ROLE,'CODEMENU'=
                 'value' => $model->getContrat()
             ],
             'CODEETS_EMB'=> [
-                'label' => 'Lieu d\'embauche',
+                'label' => 'Lieu d\'affectation',
                 'value' => $model->getEtablissement2()
             ],
             'NOM',

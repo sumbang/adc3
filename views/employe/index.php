@@ -98,7 +98,7 @@ $habilation = Habilitation::find()->where(['CODEROLE'=>$compte->ROLE,'CODEMENU'=
                 }
             ],*/
             'CODEETS'=>[
-                'header' => 'Lieu d\'affectation',
+                'header' => 'Lieu d\'embauche',
                 'attribute' => 'CODEETS',
                 'filter' => Html::activeDropDownList($searchModel, 'CODEETS', ArrayHelper::map(Etablissement::find()->orderBy(['LIBELLE'=>SORT_ASC])->all(),"CODEETS","LIBELLE"),['class'=>'form-control','prompt' => 'Choisir']),
                 'content' => function($model){
