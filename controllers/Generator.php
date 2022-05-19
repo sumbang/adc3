@@ -98,7 +98,7 @@ class Generator
 
         $departements = \app\models\Departements::findOne($employe->CODEDPT);
 
-        $etablissement = \app\models\Etablissement::findOne($employe->CODEETS);
+        $etablissement = \app\models\Etablissement::findOne($employe->CODEETS_EMB);
 
         $directions = \app\models\Direction::findOne($employe->DIRECTION);
 
