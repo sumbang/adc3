@@ -289,7 +289,8 @@ class EmployeController extends Controller
                             $cont = Contrat::find()->where(["LIKE","CODECONT",$contrat])->one();
                             $sit = Sitmat::find()->where(["LIKE","LIBELLE",$statut])->one();
                             $et1 = Etablissement::find()->where(["CODEETS" => $affectation])->one();
-                            $et2 = Etablissement::find()->where(["CODEETS" => $embauche])->one();                            $job = Emploi::find()->where(["LIKE","LIBELLE",$fonction])->one();
+                            $et2 = Etablissement::find()->where(["CODEETS" => $embauche])->one();
+                            $job = Emploi::find()->where(["LIKE","LIBELLE",$fonction])->one();
                             $dir = Direction::findOne($direction);
                             $sev = Service::findOne($service);
                             $dep = Departements::findOne($departement);

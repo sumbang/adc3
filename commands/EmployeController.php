@@ -11,10 +11,16 @@ use yii\console\ExitCode;
 
 class EmployeController extends Controller
 {
+
+    public function dates($data) {
+        $d = explode("/",$data);
+        return $d[2]."-".$d[1]."-".$d[0];
+    }
+
     public function actionIndex()
     {
 
-        $fileHandler=fopen(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."conge2.csv",'r');
+        $fileHandler=fopen(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."conges.csv",'r');
 
         if($fileHandler){
 
@@ -22,7 +28,7 @@ class EmployeController extends Controller
 
             while($line=fgetcsv($fileHandler,1000)){
 
-                //echo "ligne ".$line[0]."\n\r\n\r";
+                echo "ligne ".$line[0]."\n\r\n\r";
 
                 $tab = explode(";",$line[0]);
 
@@ -48,12 +54,12 @@ class EmployeController extends Controller
 
                       //  echo "ligne ".$line[0]."\n\r\n\r";
 
-                        if (array_key_exists(11,$tab)) {
+                        if (array_key_exists(13,$tab)) {
 
-                            $tab_categorie = explode(" ",$tab[11]);
+                            $tab_categorie = explode(" ",$tab[13]);
                             $categorie = $tab_categorie[0]; $echellon = $tab_categorie[1];
 
-                            $emploi = utf8_encode($tab[8]); $direction = substr($tab[9],16);
+                            $emploi = utf8_encode($tab[9]); $direction = $tab[10];
                             $direction = utf8_encode($direction);
 
                             $job = Emploi::find()->where(["LIKE","LIBELLE",$emploi])->one();
@@ -75,19 +81,20 @@ class EmployeController extends Controller
                             $employe->CODECAT = $categorie;
                             $employe->CODEECH = $echellon;
                             $employe->CODEEMP = $job->CODEEMP;
-                            $employe->CODEETS = $tab[7];
+                            $employe->CODEETS = $tab[8];
                             $employe->CODECIV = $tab[2];
-                            $employe->CODECONT = $tab[12];
-                            $employe->CODEETS_EMB  = $tab[10];
+                            $employe->CODECONT = $tab[14];
+                            $employe->CODEETS_EMB  = $tab[12];
                             $employe->NOM = utf8_encode($tab[3]);
                             $employe->PRENOM = utf8_encode($tab[4]);
                             $employe->DATEEMBAUCHE = $tab[6];
                             $employe->SOLDEAVANCE = 0.0;
+                            $employe->SITMAT = "00".$tab[7];
                             $employe->SOLDECREDIT = 0.0;
-                            $employe->DATECALCUL = date('Y-m-d',strtotime($tab[22]));
-                            $employe->LASTCONGE =  date('Y-m-d',strtotime($tab[21].' -1 day'));
-                            $employe->DEPLACE = ($tab[7] != $tab[10]) ? 1 : 0;
-                            $employe->DATNAISS = date('Y-m-d',strtotime($tab[5]));
+                            $employe->DATECALCUL = date('Y-m-d',strtotime($tab[24]));
+                            $employe->LASTCONGE =  date('Y-m-d',strtotime($tab[23].' -1 day'));
+                            $employe->DEPLACE = ($tab[8] != $tab[12]) ? 1 : 0;
+                            $employe->DATNAISS = date('Y-m-d',strtotime($tab[4]));
                             $employe->STATUT = 1;
                             $employe->DIRECTION = $direct->ID;
                             $employe->save(false);
@@ -97,7 +104,7 @@ class EmployeController extends Controller
                         }
 
                         else {
-                            echo "non enregistrement ".$matricule."\n\r";
+                            echo "non enregistrement ".$matricule." ".count($tab)."\n\r";
                         }
                     }
 
@@ -107,6 +114,191 @@ class EmployeController extends Controller
         }
 
         return ExitCode::OK;
+
+    }
+
+    public function actionIndex2()
+    {
+
+        $fileHandler=fopen(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."conges3.csv",'r');
+
+        if($fileHandler){
+
+            // echo "Ligne \n\r";
+
+            while($tab = fgetcsv($fileHandler,1000)){
+
+                echo "ligne ".$tab[10]."\n\r\n\r";
+
+              //  $tab = $ligne;
+
+                $matricule = $tab[0];
+
+                if(strlen($matricule) < 5) {
+                    for($i = 0; $i < (5 - strlen($tab[0])); $i++) {
+                        $matricule = "0".$matricule;
+                    }
+                }
+
+                /// echo "0".$matricule."\n\r";
+
+                $tab_exclus = array("02148","00662","02258","01156","02497","02505","00577","02344","00347","01747","02175","02017","00817","01866","01504","01769","00190","01579","00383","02440","02180","00946","00956","01961","02032","02031","01585","01563","00872","00387");
+
+                //if(in_array($matricule,$tab_exclus)) {
+
+                $exist = Employe::findOne(["MATRICULE" => $matricule]);
+
+                if($exist == null) {
+
+                    //  echo "Debut ".$matricule."\n\r";
+
+                    //  echo "ligne ".$line[0]."\n\r\n\r";
+
+                    if (array_key_exists(13,$tab)) {
+
+                        $tab_categorie = explode(" ",$tab[13]);
+                        $categorie = $tab_categorie[0]; $echellon = $tab_categorie[1];
+
+                        $emploi = utf8_encode($tab[9]); $direction = $tab[10];
+                        $direction = utf8_encode($direction);
+
+                        $job = Emploi::find()->where(["LIKE","LIBELLE",$emploi])->one();
+                        if($job == null) {
+                            $job = new Emploi();
+                            $job->LIBELLE = $emploi;
+                            $job->save(false);
+                        }
+
+                        $direct = Direction::find()->where(["LIKE","LIBELLE",$direction])->one();
+                        if($direct == null) {
+                            $direct = new Direction();
+                            $direct->LIBELLE = $direction;
+                            $direct->save(false);
+                        }
+
+                        $employe = new Employe();
+                        $employe->MATRICULE = $matricule;
+                        $employe->CODECAT = $categorie;
+                        $employe->CODEECH = $echellon;
+                        $employe->CODEEMP = $job->CODEEMP;
+                        $employe->CODEETS = $tab[8];
+                        $employe->CODECIV = $tab[2];
+                        $employe->CODECONT = $tab[14];
+                        $employe->CODEETS_EMB  = $tab[12];
+                        $employe->NOM = $tab[3];
+                        $employe->PRENOM = $tab[4];
+                        $employe->DATEEMBAUCHE = $tab[6];
+                        $employe->SOLDEAVANCE = 0.0;
+                        $employe->SITMAT = $tab[7];
+                        $employe->SOLDECREDIT = 0.0;
+                        $employe->DATECALCUL = date('Y-m-d',strtotime($tab[24]));
+                        $employe->LASTCONGE =  date('Y-m-d',strtotime($tab[23].' -1 day'));
+                        $employe->DEPLACE = ($tab[8] != $tab[12]) ? 1 : 0;
+                        $employe->DATNAISS = date('Y-m-d',strtotime($tab[5]));
+                        $employe->STATUT = 1;
+                        $employe->DIRECTION = $direct->ID;
+                        $employe->save(false);
+
+                        echo "Enregistrement ".$employe->MATRICULE." - ".$employe->NOM." ".$employe->PRENOM."\n\r";
+
+                    }
+
+                    else {
+                        echo "non enregistrement ".$matricule." ".count($tab)."\n\r";
+                    }
+                }
+
+                //    }
+
+            }
+        }
+
+        return ExitCode::OK;
+
+    }
+
+    public function actionImport() {
+
+        require_once(Yii::getAlias('@vendor/phpexcel/php-excel-reader/excel_reader2.php'));
+
+        require_once(Yii::getAlias('@vendor/phpexcel/SpreadsheetReader.php'));
+
+        $Spreadsheet = new \SpreadsheetReader(Yii::getAlias('@webfile'). DIRECTORY_SEPARATOR."conges.xls");
+
+        @ini_set("memory_limit","5096M");
+
+        $BaseMem = memory_get_usage(); $errormessage = ""; $error = true;
+
+        $Sheets = $Spreadsheet -> Sheets(); $i = 0; $tab = array();
+
+        foreach ($Sheets as $Index => $Name)
+        {
+            $Spreadsheet -> ChangeSheet($Index);
+
+            foreach ($Spreadsheet as $Key => $Row)
+            {
+                if($i > 0) {
+
+                    $matricule = $Row[0];
+
+                    $exist = Employe::findOne(["MATRICULE" => $matricule]);
+
+                    if($exist == null) {
+
+                        $tab_categorie = explode(" ",$Row[13]);
+                        $categorie = $tab_categorie[0]; $echellon = $tab_categorie[1];
+
+                        $emploi = utf8_encode($Row[9]); $direction = $Row[10];
+                        $direction = utf8_encode($direction);
+
+                        $job = Emploi::find()->where(["LIKE","LIBELLE",$emploi])->one();
+                        if($job == null) {
+                            $job = new Emploi();
+                            $job->LIBELLE = $emploi;
+                            $job->save(false);
+                        }
+
+                        $direct = Direction::find()->where(["LIKE","LIBELLE",$direction])->one();
+                        if($direct == null) {
+                            $direct = new Direction();
+                            $direct->LIBELLE = $direction;
+                            $direct->save(false);
+                        }
+
+                        $employe = new Employe();
+                        $employe->MATRICULE = $matricule;
+                        $employe->CODECAT = $categorie;
+                        $employe->CODEECH = $echellon;
+                        $employe->CODEEMP = $job->CODEEMP;
+                        $employe->CODEETS = $Row[8];
+                        $employe->CODECIV = $Row[2];
+                        $employe->CODECONT = $Row[14];
+                        $employe->CODEETS_EMB  = $Row[12];
+                        $employe->NOM = utf8_encode($Row[3]);
+                        $employe->PRENOM = utf8_encode($Row[4]);
+                        $employe->DATEEMBAUCHE = $Row[6];
+                        $employe->SOLDEAVANCE = 0.0;
+                        $employe->SITMAT = "00".$Row[7];
+                        $employe->SOLDECREDIT = 0.0;
+                        $employe->DATECALCUL = date('Y-m-d',strtotime($Row[25]));
+                        $employe->LASTCONGE =  date('Y-m-d',strtotime($Row[24]));
+                        $employe->DEPLACE = ($Row[8] != $Row[12]) ? 1 : 0;
+                        $employe->DATNAISS = date('Y-m-d',strtotime($Row[4]));
+                        $employe->STATUT = 1;
+                        $employe->DIRECTION = $direct->ID;
+                        $employe->save(false);
+
+                        echo "Enregistrement ".$employe->MATRICULE." - ".$employe->NOM." ".$employe->PRENOM."\n\r";
+
+                    }
+
+
+                }
+
+                $i++;
+            }
+
+        }
 
     }
 

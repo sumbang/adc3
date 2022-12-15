@@ -196,7 +196,7 @@ LE DIRECTEUR GENERAL<br>
 <table width="100%" border="1" style="border: 1px solid #000000; margin-top: 10px" cellspacing="0" cellpadding="0">
 <tr>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>DATE/LIEU RECRUTEMENT</b></td>
-<td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>PERIODE DE SERVICES</b></td>
+<td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>PERIODE DE SERVICE</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>CONGE PRINCIPAL</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>JOURS PERMISSION A DEDUIRE</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>JOURS RESTANTS</b></td>
@@ -268,8 +268,7 @@ LE DIRECTEUR GENERAL<br>
 
                 $builder .= '
 <tr>
-<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL, ET PAR DELEGATION,</b><br>
-							<b>LE DIRECTEUR DES RESSOURCES HUMAINES</b><br><br><br>
+<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL,</b><br>
 							<b>' . $setting->SIGNATAIRE . '</b><br>
 </td></tr>
 
@@ -330,7 +329,7 @@ LE DIRECTEUR GENERAL<br>
 <tr>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>DATE/LIEU RECRUTEMENT</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>PERIODE DE SUSPENSION</b></td>
-<td style="font-size: 10px; text-align: center; padding: 2px" width="20%" valign="middle"><b>PERIODE DE SERVICES</b></td>
+<td style="font-size: 10px; text-align: center; padding: 2px" width="20%" valign="middle"><b>PERIODE DE SERVICE</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>JOURS EXECUTES</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>CONGE PRINCIPALE</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>JOURS PERMISSION A DEDUIRE</b></td>
@@ -415,8 +414,7 @@ LE DIRECTEUR GENERAL<br>
 
                 $builder .= '
 <tr>
-<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL, ET PAR DELEGATION,</b><br>
-							<b>LE DIRECTEUR DES RESSOURCES HUMAINES</b><br><br>
+<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL, </b><br>
 							<b>' . $setting->SIGNATAIRE . '</b><br>
 </td></tr>
 
@@ -474,7 +472,7 @@ LE DIRECTEUR GENERAL<br>
 <table width="100%" border="1" style="border: 1px solid #000000; margin-top: 10px" cellspacing="0" cellpadding="0">
 <tr>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>DATE/LIEU RECRUTEMENT</b></td>
-<td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>PERIODE DE SERVICES</b></td>
+<td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>PERIODE DE SERVICE</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>CONGE PRINCIPAL</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>JOURS PERMISSION A DEDUIRE</b></td>
 <td style="font-size: 10px; text-align: center; padding: 2px" valign="middle"><b>JOURS RESTANTS</b></td>
@@ -541,8 +539,7 @@ LE DIRECTEUR GENERAL<br>
 
             $builder .= '
 <tr>
-<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL, ET PAR DELEGATION,</b><br>
-							<b>LE DIRECTEUR DES RESSOURCES HUMAINES</b><br><br>
+<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL</b><br>
 							<b>' . $setting->SIGNATAIRE . '</b><br>
 </td></tr>
 
@@ -583,7 +580,7 @@ LE DIRECTEUR GENERAL<br>
                 'SetAuthor' => 'ADC',
                 'SetCreator' => 'ADC',
                 'SetKeywords' => 'ADC',
-                'SetHeader'=>['<div style="text-align: left;  height: 100px"><img src="../web/img/logo.png" width="200px" height="auto" /></div>'],
+                'SetHeader'=>['<div style="text-align: left;  height: 100px"><img src="../web/img/logo.png" width="300px" height="auto" /></div>'],
                 'SetFooter'=>['<div style="text-align: center; color:#000000; font-size: 12px"><br>Siège Social : Aéroport International de Yaoundé – Nsimalen – BP 13615 Yaoundé<br>Tél. : (237) 222 23 36 02 / 222 23 45 21 – Fax (237) 222 23 45 20</div>'],
             ],
 
@@ -592,7 +589,7 @@ LE DIRECTEUR GENERAL<br>
         $mpdf = $pdf->api;
       //  $mpdf = new \Mpdf\Mpdf();
 
-        $mpdf->SetHTMLHeader('<div style="text-align: left;  height: 100px"><img src="../web/img/logo.png" width="200px" height="auto" /></div>',true);
+        $mpdf->SetHTMLHeader('<div style="text-align: left;  height: 100px"><img src="../web/img/logo.png" width="300px" height="auto" /></div>',true);
 
         $mpdf->SetHTMLFooter('<div style="text-align: center; color:#000000; font-size: 12px"><br>Siège Social : Aéroport International de Yaoundé – Nsimalen – BP 13615 Yaoundé<br>Tél. : (237) 222 23 36 02 / 222 23 45 21 – Fax (237) 222 23 45 20</div>',true);
 

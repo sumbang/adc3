@@ -339,7 +339,7 @@ class JouissanceController extends Controller
                                     $logs->DATEOP = date("Y-m-d H:i:s");
                                     $logs->USERID = Yii::$app->user->identity->IDUSER;
                                     $logs->USERNAME = Yii::$app->user->identity->NOM;
-                                    $logs->OPERATION = "Création jouissance totale numero ".$model->ID_ABSENCE;
+                                    $logs->OPERATION = "Création jouissance totale numero ".$model->IDNATURE;
                                     $logs->save(false);
 
                                     return $this->redirect(['valider', 'id' => $model->IDNATURE]);
@@ -602,6 +602,7 @@ class JouissanceController extends Controller
             $texte = str_replace('{direction}',$direction,$texte);
             $texte = str_replace('{plateforme}',$lieu,$texte);
             $texte = str_replace('{service}',$service,$texte);
+            $texte = str_replace('{signataire}',$model->SIGNATAIRE,$texte);
             $texte = str_replace('{decision}',$decision->REF_DECISION,$texte); 
             $texte = str_replace('{datevalid}',$this->trueDate($decision->DATEVAL),$texte); 
             $texte = str_replace('{datedebut}',$this->trueDate2($model->DEBUT),$texte);
@@ -648,6 +649,7 @@ class JouissanceController extends Controller
             $texte = str_replace('{direction}',$direction,$texte);
             $texte = str_replace('{plateforme}',$lieu,$texte);
             $texte = str_replace('{service}',$service,$texte);
+            $texte = str_replace('{signataire}',$model->SIGNATAIRE,$texte);
             $texte = str_replace('{decision}',$decision->REF_DECISION,$texte); 
             $texte = str_replace('{datevalid}',$this->trueDate($decision->DATEVAL),$texte); 
             $texte = str_replace('{datedebut}',$this->trueDate2($model->DEBUT),$texte); 
@@ -684,6 +686,7 @@ class JouissanceController extends Controller
             $texte = str_replace('{direction}',$direction,$texte);
             $texte = str_replace('{plateforme}',$lieu,$texte);
             $texte = str_replace('{service}',$service,$texte);
+            $texte = str_replace('{signataire}',$model->SIGNATAIRE,$texte);
             $texte = str_replace('{decision}',$decision->REF_DECISION,$texte); 
             $texte = str_replace('{datevalid}',$this->trueDate($decision->DATEVAL),$texte); 
             $texte = str_replace('{datedebut}',$this->trueDate2($decision->DEBUTPLANIF),$texte); 
@@ -723,6 +726,7 @@ class JouissanceController extends Controller
             $texte = str_replace('{direction}',$direction,$texte);
             $texte = str_replace('{plateforme}',$lieu,$texte);
             $texte = str_replace('{service}',$service,$texte);
+            $texte = str_replace('{signataire}',$model->SIGNATAIRE,$texte);
             $texte = str_replace('{decision}',$decision->REF_DECISION,$texte);
             $texte = str_replace('{datevalid}',$this->trueDate($decision->DATEVAL),$texte);
             $texte = str_replace('{datedebut}',$this->trueDate2($model->DEBUT),$texte);
@@ -771,6 +775,7 @@ class JouissanceController extends Controller
             $texte = str_replace('{direction}',$direction,$texte);
             $texte = str_replace('{plateforme}',$lieu,$texte);
             $texte = str_replace('{service}',$service,$texte);
+            $texte = str_replace('{signataire}',$model->SIGNATAIRE,$texte);
             $texte = str_replace('{decision}',$decision->REF_DECISION,$texte);
             $texte = str_replace('{datevalid}',$this->trueDate($decision->DATEVAL),$texte);
             $texte = str_replace('{datedebut}',$this->trueDate2($model->DEBUTREPORT),$texte);

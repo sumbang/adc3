@@ -836,7 +836,7 @@ class ExerciceController extends Controller
 
         $decision = Decisionconges::find()->where(['ANNEEEXIGIBLE'=>$exercice])->all();
 
-        $total = count($decision); $next = $total + 1;
+        $total = count($decision); $next = $total;
 
         $position = 4 - strlen($next);
 

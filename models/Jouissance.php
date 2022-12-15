@@ -31,6 +31,9 @@ use Yii;
  * @property string $FINREPORT
  * @property string $DOCUMENT3
  * @property string $DOCUMENT4
+ * @property string $TIMBRE
+ * @property string $SIGNATAIRE
+ * @property string $RESPONSABLE
  */
 class Jouissance extends \yii\db\ActiveRecord
 {
@@ -59,6 +62,7 @@ class Jouissance extends \yii\db\ActiveRecord
         return [
             [['MESSAGE','employe','debutconge','timbre','signataire','decision','jouissances'], 'string'],
             [['IDDECISION','TYPES'],'required'],
+            [['TIMBRE','SIGNATAIRE','RESPONSABLE'],'safe'],
             [['JOUR', 'DATECREATION','EXERCICE','STATUT','COMMENTAIRE','DOCUMENT2','NUMERO2','DATECANCEL','IDUSER','DEBUTREPORT','FINREPORT'], 'safe'],
             [['IDDECISION', 'USERCREATE','nbjour'], 'integer'],
             [['TITRE', 'DEBUT', 'LIEU', 'DOCUMENT','DOCUMENT3','DOCUMENT4'], 'string', 'max' => 100],

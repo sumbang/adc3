@@ -135,7 +135,9 @@ if($exo == null) $ex = date("Y"); else $ex = $exo->ANNEEEXIGIBLE;
                     $employe = Employe::find()->where(["MATRICULE"=>$decision->MATICULE])->one();
                     if($employe != null) {
                         $d = \app\models\Direction::findOne($employe->DIRECTION);
-                        return $d->LIBELLE; }
+                        if($d!= null) return $d->LIBELLE; else return "";
+
+                    }
 
                     else return  "";
 
@@ -173,7 +175,7 @@ if($exo == null) $ex = date("Y"); else $ex = $exo->ANNEEEXIGIBLE;
 
                         $d = \app\models\Service::findOne($employe->SERVICE);
 
-                        return $d->LIBELLE; }
+                        if($d != null) return $d->LIBELLE; else return ""; }
 
                     else return  "";
 
