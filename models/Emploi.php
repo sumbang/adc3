@@ -41,7 +41,7 @@ class Emploi extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'CODEEMP' => 'Codeemp',
+            'CODEEMP' => 'ID',
             'LIBELLE' => 'Libelle',
         ];
     }

@@ -3,17 +3,13 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Roles;
-use app\models\RolesSearch;
+use app\models\Emploi;
+use app\models\EmploiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
-/**
- * RolesController implements the CRUD actions for Roles model.
- */
-class RolesController extends Controller
+class EmploiController extends Controller
 {
     /**
      * @inheritdoc
@@ -46,7 +42,7 @@ class RolesController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new RolesSearch();
+        $searchModel = new EmploiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -75,7 +71,7 @@ class RolesController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Roles();
+        $model = new Emploi();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Opération réussie.');
@@ -133,10 +129,11 @@ class RolesController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Roles::findOne($id)) !== null) {
+        if (($model = Emploi::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

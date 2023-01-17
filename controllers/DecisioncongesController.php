@@ -579,6 +579,8 @@ class DecisioncongesController extends Controller
 
         $destination = $repertoire."/".$name;
 
+        $lienfinal = "http://185.163.126.231/web/uploads/".$name;
+
         if($zip->open($destination,\ZIPARCHIVE::CREATE) !== true) {
 
             return false;
@@ -612,7 +614,7 @@ class DecisioncongesController extends Controller
         $logs->OPERATION = "Generation modeles d'edition pour l'historique ".$historique->ID;
         $logs->save(false);
 
-        Yii::$app->session->setFlash('success', 'Modèles d\'édition crées avec succès. <a href="'.$destination.'" target="_blank">Ouvrir le ZIP </a>');
+        Yii::$app->session->setFlash('success', 'Modèles d\'édition crées avec succès. <a href="'.$lienfinal.'" target="_blank">Ouvrir le ZIP </a>');
 
         return $this->redirect(['decisionconges/index','table' => 'T6']);
 

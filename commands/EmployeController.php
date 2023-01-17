@@ -302,4 +302,19 @@ class EmployeController extends Controller
 
     }
 
+    public function actionMailer() {
+        try {
+
+            \Yii::$app
+                ->mailer->compose()
+                ->setFrom(['noreply@sygec.cm' => 'SYGEC'])
+                ->setTo("tsumbang@gmail.com")
+                ->setSubject("test")
+                ->setHtmlBody("Hello Wolrd")
+                ->send();
+        } catch (\Swift_SwiftException $exception) {
+        } catch (\Exception $exception) {
+        }
+    }
+
 }

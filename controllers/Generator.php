@@ -98,7 +98,7 @@ class Generator
 
         $departements = \app\models\Departements::findOne($employe->CODEDPT);
 
-        $etablissement = \app\models\Etablissement::findOne($employe->CODEETS_EMB);
+        $etablissement = \app\models\Etablissement::findOne($employe->CODEETS);
 
         $directions = \app\models\Direction::findOne($employe->DIRECTION);
 
@@ -223,7 +223,7 @@ LE DIRECTEUR GENERAL<br>
 
                 else $builder .= '<td valign="top" height="30px" style="text-align: center; padding: 2px; font-size: 10px" > / </td>';
 
-                if ($employe->CODEETS == "DLA") {
+                if ($employe->CODEETS_EMB == "DLA") {
 
                     $di = Direction::findOne($employe->DIRECTION);
 
@@ -233,7 +233,7 @@ LE DIRECTEUR GENERAL<br>
                         $ampliation = Ampliation::findOne(3);
                     }
 
-                } else if ($employe->CODEETS == "NSI") {
+                } else if ($employe->CODEETS_EMB == "NSI") {
 
                     $di = Direction::findOne($employe->DIRECTION);
 
@@ -243,7 +243,7 @@ LE DIRECTEUR GENERAL<br>
                     } else {
                         $ampliation = Ampliation::findOne(9);
                     }
-                } else  $ampliation = Ampliation::findOne(['VILLE' => $employe->CODEETS]);
+                } else  $ampliation = Ampliation::findOne(['VILLE' => $employe->CODEETS_EMB]);
 
 
                 $text3 = $employe->RH == 1 ? $setting->ARTICLE31 : $setting->ARTICLE3;
@@ -268,8 +268,8 @@ LE DIRECTEUR GENERAL<br>
 
                 $builder .= '
 <tr>
-<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL,</b><br>
-							<b>' . $setting->SIGNATAIRE . '</b><br>
+<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><br><b>' . $setting->SIGNATAIRE . '</b><br>
+							<br>
 </td></tr>
 
 <tr><td height="50px" style="text-align: left; padding: 10px;">
@@ -371,7 +371,7 @@ LE DIRECTEUR GENERAL<br>
 
                 if ($employe->DEPLACE == 1) $builder .= '<td valign="middle" height="30px" style="text-align: center; padding: 1px; font-size: 10px" >ADC S.A.</td>'; else $builder .= '<td valign="top" height="30px" style="text-align: center; padding: 2px; font-size: 10px" > / </td>';
 
-                if ($employe->CODEETS == "DLA") {
+                if ($employe->CODEETS_EMB == "DLA") {
 
                     if (strpos($employe->DIRECTION, 'Exploitation') !== false) {
 
@@ -380,7 +380,7 @@ LE DIRECTEUR GENERAL<br>
                         $ampliation = Ampliation::findOne(3);
                     }
 
-                } else if ($employe->CODEETS == "NSI") {
+                } else if ($employe->CODEETS_EMB == "NSI") {
 
                     if (strpos($employe->DIRECTION, 'International') !== false) {
 
@@ -388,7 +388,7 @@ LE DIRECTEUR GENERAL<br>
                     } else {
                         $ampliation = Ampliation::findOne(9);
                     }
-                } else  $ampliation = Ampliation::findOne(['VILLE' => $employe->CODEETS]);
+                } else  $ampliation = Ampliation::findOne(['VILLE' => $employe->CODEETS_EMB]);
 
                 $text3 = $employe->RH == 1 ? $setting->ARTICLE31 : $setting->ARTICLE3;
 
@@ -414,8 +414,8 @@ LE DIRECTEUR GENERAL<br>
 
                 $builder .= '
 <tr>
-<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL, </b><br>
-							<b>' . $setting->SIGNATAIRE . '</b><br>
+<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><br><b>' . $setting->SIGNATAIRE . '</b><br>
+							<br>
 </td></tr>
 
 <tr><td height="50px" style="text-align: left; padding: 10px;">
@@ -499,7 +499,7 @@ LE DIRECTEUR GENERAL<br>
 
             else $builder .= '<td valign="top" height="30px" style="text-align: center; padding: 2px; font-size: 10px" > / </td>';
 
-            if ($employe->CODEETS == "DLA") {
+            if ($employe->CODEETS_EMB == "DLA") {
 
                 if (strpos($employe->DIRECTION, 'Exploitation') !== false) {
 
@@ -508,7 +508,7 @@ LE DIRECTEUR GENERAL<br>
                     $ampliation = Ampliation::findOne(3);
                 }
 
-            } else if ($employe->CODEETS == "NSI") {
+            } else if ($employe->CODEETS_EMB == "NSI") {
 
                 if (strpos($employe->DIRECTION, 'International') !== false) {
 
@@ -516,7 +516,7 @@ LE DIRECTEUR GENERAL<br>
                 } else {
                     $ampliation = Ampliation::findOne(9);
                 }
-            } else  $ampliation = Ampliation::findOne(['VILLE' => $employe->CODEETS]);
+            } else  $ampliation = Ampliation::findOne(['VILLE' => $employe->CODEETS_EMB]);
 
 
             $text3 = $employe->RH == 1 ? $setting->ARTICLE31 : $setting->ARTICLE3;
@@ -539,8 +539,7 @@ LE DIRECTEUR GENERAL<br>
 
             $builder .= '
 <tr>
-<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><b><br>POUR LE DIRECTEUR GENERAL</b><br>
-							<b>' . $setting->SIGNATAIRE . '</b><br>
+<td colspan="2" height="30px" style="text-align: left; padding-left: 300px"><br><b>' . $setting->SIGNATAIRE . '</b><br>	<br>
 </td></tr>
 
 <tr><td height="50px" style="text-align: left; padding: 10px;">
