@@ -38,7 +38,7 @@ $habilation = Habilitation::find()->where(['CODEROLE'=>$compte->ROLE,'CODEMENU'=
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'CODEEMP',
+           // 'CODEEMP',
             'LIBELLE',
 
             ['class' => 'yii\grid\ActionColumn','template'=>$vue],

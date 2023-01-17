@@ -75,7 +75,7 @@ class EmploiController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Opération réussie.');
-            return $this->redirect(['view', 'id' => $model->CODE]);
+            return $this->redirect(['view', 'id' => $model->CODEEMP]);
         }
 
         return $this->render('create', [
@@ -96,7 +96,7 @@ class EmploiController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Opération réussie.');
-            return $this->redirect(['view', 'id' => $model->CODE]);
+            return $this->redirect(['view', 'id' => $model->CODEEMP]);
         }
 
         return $this->render('update', [
